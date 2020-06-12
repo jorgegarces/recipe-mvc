@@ -1,6 +1,7 @@
 package com.springtraining.recipemvc.domain;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
 
 @Entity
@@ -26,6 +27,12 @@ public class Ingredient {
         this.amount = amount;
         this.uom = uom;
         this.recipe = recipe;
+    }
+
+    public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom) {
+        this.description = description;
+        this.amount = amount;
+        this.uom = uom;
     }
 
     public Long getId() {

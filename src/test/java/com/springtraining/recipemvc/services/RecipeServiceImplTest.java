@@ -3,17 +3,18 @@ package com.springtraining.recipemvc.services;
 import com.springtraining.recipemvc.domain.Recipe;
 import com.springtraining.recipemvc.repositories.RecipeRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class RecipeServiceImplTest {
 
     @Mock
@@ -22,9 +23,17 @@ class RecipeServiceImplTest {
     @InjectMocks
     RecipeServiceImpl recipeService;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.initMocks(this);
+    @Test
+    public void getRecipeByIdTest() {
+
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        when(recipeRepository.findById(any())).thenReturn(java.util.Optional.of(recipe));
+
+        Assertions.assertEquals(1, recipeService.findById(1L).getId());
+        verify(recipeRepository, times(1)).findById(any());
+        verify(recipeRepository, never()).findAll();
     }
 
     @Test

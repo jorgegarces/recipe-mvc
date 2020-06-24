@@ -3,7 +3,6 @@ package com.springtraining.recipemvc.domain;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
 
 @Data

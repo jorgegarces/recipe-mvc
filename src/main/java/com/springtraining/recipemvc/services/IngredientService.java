@@ -5,4 +5,6 @@ import com.springtraining.recipemvc.commands.IngredientCommand;
 public interface IngredientService {
 
     IngredientCommand findByRecipeIdAndIngredientId(Long aLong, Long l);
+
+    public IngredientCommand saveIngredientCommand(IngredientCommand command);
 }
